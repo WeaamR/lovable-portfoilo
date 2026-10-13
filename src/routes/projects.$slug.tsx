@@ -170,7 +170,7 @@ function Results({ p }: { p: Project }) {
 function ProjectPage() {
   const { project: p } = Route.useLoaderData();
   const idx = projects.findIndex((x) => x.id === p.id);
-  const next = projects[(idx + 1) % projects.length];
+  const next = projects[(idx + 1) % projects.length]!;
   return (
     <main id="main" className="container-page max-w-4xl py-12 sm:py-16">
       <Link to="/" hash="projects" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">

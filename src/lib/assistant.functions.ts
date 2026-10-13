@@ -49,7 +49,7 @@ export type AssistantResult =
 export const askAssistant = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => inputSchema.parse(data))
   .handler(async ({ data }): Promise<AssistantResult> => {
-    const last = data.messages[data.messages.length - 1];
+    const last = data.messages[data.messages.length - 1]!;
     if (last.role !== "user" || !last.content.trim() || last.content.length > MAX_INPUT) {
       return { ok: false, error: `Please enter a question of up to ${MAX_INPUT} characters.`, retryable: false };
     }
@@ -57,7 +57,7 @@ export const askAssistant = createServerFn({ method: "POST" })
     if (rateLimited(ip)) {
       return { ok: false, error: "Too many questions in a short time. Please wait a minute and try again.", retryable: true };
     }
-    const apiKey = process.env.LOVABLE_API_KEY;
+    const apiKey = process.env["LOVABLE_API_KEY"];
     if (!apiKey) return { ok: false, error: "The assistant is not configured right now.", retryable: false };
 
     const history = data.messages.slice(-MAX_HISTORY).map((m) => ({
@@ -132,8 +132,8 @@ export const askAssistant = createServerFn({ method: "POST" })
     if (!text.trim()) return { ok: false, error: "The assistant returned an empty answer.", retryable: true };
 
     const match = text.match(/\n?\s*SOURCES:\s*(.*)\s*$/i);
-    const ids = match ? match[1].split(",").map((s) => s.trim()) : [];
+    const ids = match ? (match[1] ?? "").split(",").map((s) => s.trim()) : [];
     const body = (match ? text.slice(0, match.index) : text).trim().slice(0, 2000);
-    const sources = [...new Set(ids)].filter((id) => id in sourceLinks).map((id) => sourceLinks[id]);
+    const sources = [...new Set(ids)].flatMap((id) => (sourceLinks[id] ? [sourceLinks[id]] : []));
     return { ok: true, text: body, sources };
   });

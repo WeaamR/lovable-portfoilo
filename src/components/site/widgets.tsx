@@ -42,7 +42,7 @@ function Segmented<T extends string>({
 
 export function PreprocessExamples({ initial = "casing", compact = false }: { initial?: string; compact?: boolean }) {
   const [id, setId] = useState(initial);
-  const ex = nlpExamples.find((e) => e.id === id) ?? nlpExamples[0];
+  const ex = nlpExamples.find((e) => e.id === id) ?? nlpExamples[0]!;
   return (
     <div className="space-y-4">
       {!compact && (
@@ -147,9 +147,9 @@ export function DataTable({ caption, columns, rows }: { caption?: string; column
 }
 
 export function PolicyLookup() {
-  const [tier, setTier] = useState<string>(qkePolicy.tiers[0]);
+  const [tier, setTier] = useState<string>(qkePolicy.tiers[0]!);
   const [band, setBand] = useState(0);
-  const level = qkePolicy.table[tier][band];
+  const level = qkePolicy.table[tier]?.[band] ?? 512;
   return (
     <div className="space-y-5">
       <RecordedLabel>Illustration of the documented selection rules. No TLS connection is executed.</RecordedLabel>
@@ -175,7 +175,7 @@ export function PolicyLookup() {
       <DataTable
         caption="Documented policy table (ML-KEM level)"
         columns={["Device", ...qkePolicy.bands]}
-        rows={qkePolicy.tiers.map((t) => [t, ...qkePolicy.table[t].map(String)])}
+        rows={qkePolicy.tiers.map((t) => [t, ...(qkePolicy.table[t] ?? []).map(String)])}
       />
       <p className="text-xs text-muted-foreground">
         512 → x25519_mlkem512 · 768 → X25519MLKEM768 · 1024 → SecP384r1MLKEM1024
@@ -185,7 +185,7 @@ export function PolicyLookup() {
 }
 
 export function NNTabs() {
-  const [id, setId] = useState(nnTabs[0].id);
+  const [id, setId] = useState(nnTabs[0]!.id);
   const tab = nnTabs.find((t) => t.id === id)!;
   return (
     <div className="space-y-4">
