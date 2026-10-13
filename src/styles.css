@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Readex Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Readex Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -38,25 +38,25 @@
 :root {
   --radius: 0.75rem;
   --background: oklch(0.98 0.003 264);
-  --foreground: oklch(0.255 0.025 225);
+  --foreground: oklch(0.25 0.02 325);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.255 0.025 225);
+  --card-foreground: oklch(0.25 0.02 325);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.255 0.025 225);
-  --primary: oklch(0.47 0.08 185);
-  --primary-foreground: oklch(0.99 0.003 185);
+  --popover-foreground: oklch(0.25 0.02 325);
+  --primary: #2B212C;
+  --primary-foreground: oklch(0.99 0.003 325);
   --secondary: oklch(0.955 0.006 220);
-  --secondary-foreground: oklch(0.255 0.025 225);
+  --secondary-foreground: oklch(0.25 0.02 325);
   --muted: oklch(0.955 0.006 220);
-  --muted-foreground: oklch(0.53 0.02 225);
-  --accent: oklch(0.47 0.08 185);
-  --accent-foreground: oklch(0.99 0.003 185);
-  --accent-soft: oklch(0.95 0.025 185);
+  --muted-foreground: oklch(0.5 0.02 325);
+  --accent: #2B212C;
+  --accent-foreground: oklch(0.99 0.003 325);
+  --accent-soft: oklch(0.95 0.012 325);
   --destructive: oklch(0.56 0.19 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.9 0.008 220);
   --input: oklch(0.9 0.008 220);
-  --ring: oklch(0.47 0.08 185);
+  --ring: #2B212C;
 }
 
 @layer base {

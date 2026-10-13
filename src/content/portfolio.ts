@@ -9,6 +9,7 @@ export const profile = {
     "Information Cyber Security Engineering graduate with practical project experience in machine learning, NLP, and data analysis using Python.",
   supporting: "Currently training in Generative and Agentic AI and AI automation.",
   location: "Palestine",
+  email: "weaamraed19@gmail.com",
   github: "https://github.com/WeaamR",
   linkedin: "https://www.linkedin.com/in/weaam-abdalaal",
   about:
@@ -349,7 +350,7 @@ export const education = {
   degree: "B.Sc. in Information Cyber Security Engineering",
   school: "University College of Applied Sciences (UCAS)",
   date: "September 2026",
-  gpa: "GPA: 93.24/100 — Excellent",
+  gpa: "GPA: 93.24% — Excellent",
 };
 export const training = [
   { name: "Generative & Agentic AI", status: "In Progress" },
@@ -390,9 +391,9 @@ Limitations: ${x.limitations.join(" ")}`,
     .join("; ");
   const nn = nnTabs.map((t) => `${t.label}: ${t.rows.map((r) => r.join(" / ")).join("; ")} (${t.columns.join(", ")}). ${t.takeaway}`).join("\n");
   return `# Profile
-${profile.name}, ${profile.focus}. ${profile.description} ${profile.supporting} Location: ${profile.location}. GitHub: ${profile.github}. LinkedIn: ${profile.linkedin}.
+${profile.name}, ${profile.focus}. ${profile.description} ${profile.supporting} Location: ${profile.location}. Email: ${profile.email}. GitHub: ${profile.github}. LinkedIn: ${profile.linkedin}.
 About: ${profile.about}
-No email, phone, availability, years of experience, or CV are published.
+No phone, availability, years of experience, or CV are published.
 
 # Projects
 ${p}
