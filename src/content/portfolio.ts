@@ -12,8 +12,12 @@ export const profile = {
   email: "weaamraed19@gmail.com",
   github: "https://github.com/WeaamR",
   linkedin: "https://www.linkedin.com/in/weaam-abdalaal",
-  about:
-    "I’m an Information Cyber Security Engineering graduate building practical experience in AI and data science. My projects span text preprocessing, sentiment classification, neural-network experiments, and collaborative security research. I’m interested in understanding why a solution works, how it behaves under different conditions, and how to communicate its results clearly.",
+  about: [
+    "I'm Weaam Abdalaal, a recent Cybersecurity Information Engineering graduate from the University College of Applied Sciences (UCAS), building my career at the intersection of AI and cybersecurity.",
+    "My foundation is in security and networking, which shaped how I approach problems: carefully, with attention to evidence and limitations. I apply that mindset to AI and data science, where I work across the workflow from data preparation and model development to evaluation and documentation. My projects include NLP preprocessing pipelines, a Yelp sentiment analysis comparing TF-IDF + Logistic Regression, SimpleRNN, and LSTM models, and neural network experiments. In my graduation project, AdaptiveQKE, a team research project on hybrid post-quantum key exchange for TLS 1.3, I designed and implemented the selection policy and built the interactive web demo.",
+    "I learn best through practical projects, applying technical concepts to real-world problems. I'm currently deepening my skills through training in Generative AI, Agentic AI, and intelligent automation.",
+    "I'm drawn to problems at the intersection of AI and security, and I do my best work on collaborative, hands-on projects. I'm open to internships, research collaborations, and remote or international opportunities in this space.",
+  ],
 } as const;
 
 export type Category = "Machine Learning" | "NLP & Data" | "Security Research";
@@ -238,7 +242,7 @@ export const yelpTrainingNote =
 
 export const qkePolicy = {
   tiers: ["High-performance", "Mid-range", "Constrained"] as const,
-  bands: ["RTT < 50 ms", "50–100 ms inclusive", "RTT > 100 ms"] as const,
+  bands: ["RTT < 50 ms", "50 ms ≤ RTT ≤ 100 ms", "RTT > 100 ms"] as const,
   table: {
     "High-performance": [1024, 768, 512],
     "Mid-range": [768, 768, 512],
@@ -392,15 +396,17 @@ Limitations: ${x.limitations.join(" ")}`,
   const nn = nnTabs.map((t) => `${t.label}: ${t.rows.map((r) => r.join(" / ")).join("; ")} (${t.columns.join(", ")}). ${t.takeaway}`).join("\n");
   return `# Profile
 ${profile.name}, ${profile.focus}. ${profile.description} ${profile.supporting} Location: ${profile.location}. Email: ${profile.email}. GitHub: ${profile.github}. LinkedIn: ${profile.linkedin}.
-About: ${profile.about}
-No phone, availability, years of experience, or CV are published.
+# [section:about] About
+${profile.about.join("\n")}
+Open to: internships, research collaborations, and remote or international opportunities at the intersection of AI and security.
+No phone, years of experience, or CV are published.
 
 # Projects
 ${p}
 
 # Recorded results
 Yelp: ${yelp}. Dataset: 100,000 selected training reviews, 99,997 after cleaning, 20,000 test. ${yelpTrainingNote}
-AdaptiveQKE policy (device tier × RTT band → group): High-performance 1024/768/512; Mid-range 768/768/512; Constrained 512/512/512. 512=x25519_mlkem512, 768=X25519MLKEM768, 1024=SecP384r1MLKEM1024. Datasets: 1,800 main trials, 450 near-zero-network trials.
+AdaptiveQKE documented policy lookup (cite project:adaptiveqke; this is a policy lookup, no TLS connection is executed). High-performance device rules: RTT < 50 ms → SecP384r1MLKEM1024; 50 ms ≤ RTT ≤ 100 ms (so exactly 50 ms and exactly 100 ms) → X25519MLKEM768; RTT > 100 ms → x25519_mlkem512. Mid-range: RTT < 50 ms → X25519MLKEM768; 50 ms ≤ RTT ≤ 100 ms → X25519MLKEM768; RTT > 100 ms → x25519_mlkem512. Constrained: x25519_mlkem512 in every band. Datasets: 1,800 main trials, 450 near-zero-network trials.
 NLP pipeline: ${nlpStats.map((s) => `${s.label} ${s.value}`).join("; ")}.
 Neural network experiments:
 ${nn}

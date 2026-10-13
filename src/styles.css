@@ -37,25 +37,25 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.98 0.003 264);
+  --background: oklch(0.982 0.006 75);
   --foreground: oklch(0.25 0.02 325);
-  --card: oklch(1 0 0);
+  --card: oklch(0.995 0.003 75);
   --card-foreground: oklch(0.25 0.02 325);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.02 325);
   --primary: #2B212C;
   --primary-foreground: oklch(0.99 0.003 325);
-  --secondary: oklch(0.955 0.006 220);
+  --secondary: oklch(0.95 0.012 60);
   --secondary-foreground: oklch(0.25 0.02 325);
-  --muted: oklch(0.955 0.006 220);
+  --muted: oklch(0.95 0.012 60);
   --muted-foreground: oklch(0.5 0.02 325);
   --accent: #2B212C;
   --accent-foreground: oklch(0.99 0.003 325);
-  --accent-soft: oklch(0.95 0.012 325);
+  --accent-soft: oklch(0.94 0.018 340);
   --destructive: oklch(0.56 0.19 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.008 220);
-  --input: oklch(0.9 0.008 220);
+  --border: oklch(0.9 0.012 60);
+  --input: oklch(0.9 0.012 60);
   --ring: #2B212C;
 }
 
@@ -76,7 +76,8 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    color: var(--color-primary);
   }
   :focus-visible {
     outline: 2px solid var(--color-ring);
@@ -105,7 +106,7 @@
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-primary);
 }

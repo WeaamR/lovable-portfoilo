@@ -6,8 +6,8 @@ import { profile } from "@/content/portfolio";
 import { useAssistant } from "./assistant";
 
 const nav = [
-  { label: "Projects", hash: "projects" },
   { label: "About", hash: "about" },
+  { label: "Projects", hash: "projects" },
   { label: "Skills", hash: "skills" },
   { label: "Education", hash: "education" },
   { label: "Contact", hash: "contact" },
