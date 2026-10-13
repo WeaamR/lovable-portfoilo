@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Github, Linkedin, MapPin, MessageSquare } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, MapPin, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAssistant } from "@/components/site/assistant";
 import { PreprocessExamples, RecordedLabel } from "@/components/site/widgets";
@@ -185,9 +185,12 @@ function Index() {
       </Section>
 
       <Section id="contact" eyebrow="Contact" title="Let’s talk about the work">
-        <p className="max-w-xl text-muted-foreground">The best way to reach me is through LinkedIn. Code and project evidence are on GitHub.</p>
+        <p className="max-w-xl text-muted-foreground">Email me at <a href={`mailto:${profile.email}`} className="font-medium text-primary underline underline-offset-4">{profile.email}</a> or reach me through LinkedIn. Code and project evidence are on GitHub.</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button asChild size="lg">
+            <a href={`mailto:${profile.email}`}><Mail className="h-4 w-4" /> Email</a>
+          </Button>
+          <Button asChild size="lg" variant="outline">
             <a href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" /> LinkedIn</a>
           </Button>
           <Button asChild size="lg" variant="outline">
