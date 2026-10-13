@@ -26,7 +26,7 @@ function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string
     <section id={id} aria-labelledby={`${id}-title`} className="border-t py-20 sm:py-24">
       <div className="container-page">
         <p className="eyebrow">{eyebrow}</p>
-        <h2 id={`${id}-title`} className="mt-2 text-3xl font-extrabold sm:text-4xl">{title}</h2>
+        <h2 id={`${id}-title`} className="mt-2 text-2xl font-bold sm:text-3xl">{title}</h2>
         <div className="mt-10">{children}</div>
       </div>
     </section>
@@ -45,7 +45,7 @@ function Index() {
         <div className="container-page grid items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
           <div className="min-w-0">
             <p className="eyebrow">{profile.focus}</p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] sm:text-6xl">{profile.headline}</h1>
+            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">{profile.headline}</h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">{profile.description}</p>
             <p className="mt-3 max-w-xl text-muted-foreground">{profile.supporting}</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -77,6 +77,20 @@ function Index() {
           </aside>
         </div>
       </section>
+
+      <Section id="about" eyebrow="About" title="Understanding why a solution works">
+        <div className="grid items-start gap-10 md:grid-cols-[18rem_1fr]">
+          <img
+            src={portrait.url}
+            alt="Portrait of Weaam Abdalaal"
+            width={288}
+            height={360}
+            loading="lazy"
+            className="aspect-[4/5] w-full max-w-72 rounded-2xl border object-cover object-top"
+          />
+          <div className="max-w-2xl space-y-4 text-base leading-relaxed sm:text-[1.05rem]">{profile.about.map((para) => <p key={para.slice(0, 24)}>{para}</p>)}</div>
+        </div>
+      </Section>
 
       <Section id="projects" eyebrow="Selected work" title="Projects">
         <div role="group" aria-label="Filter projects by category" className="mb-8 flex flex-wrap gap-2">
@@ -116,20 +130,6 @@ function Index() {
             </li>
           ))}
         </ul>
-      </Section>
-
-      <Section id="about" eyebrow="About" title="Understanding why a solution works">
-        <div className="grid items-start gap-10 md:grid-cols-[18rem_1fr]">
-          <img
-            src={portrait.url}
-            alt="Portrait of Weaam Abdalaal"
-            width={288}
-            height={360}
-            loading="lazy"
-            className="aspect-[4/5] w-full max-w-72 rounded-2xl border object-cover object-top"
-          />
-          <p className="max-w-2xl text-lg leading-relaxed">{profile.about}</p>
-        </div>
       </Section>
 
       <Section id="skills" eyebrow="Skills" title="Skills and evidence">
