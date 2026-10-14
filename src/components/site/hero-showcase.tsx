@@ -60,7 +60,7 @@ export function HeroShowcase() {
           </button>
         ))}
       </div>
-      <div id={`panel-${tab}`} role="tabpanel" aria-labelledby={`tab-${tab}`} tabIndex={0} className="mt-5 flex min-h-[21rem] flex-col rounded-lg">
+      <div id={`panel-${tab}`} role="tabpanel" aria-labelledby={`tab-${tab}`} tabIndex={0} className="mt-5 flex min-h-[24rem] flex-col rounded-lg">
         {tab === "nlp" && (
           <>
             <h3 className="text-sm font-bold">{h.nlp.heading}</h3>
