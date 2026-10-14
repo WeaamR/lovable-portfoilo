@@ -419,3 +419,34 @@ Currently learning (not yet demonstrated in projects): ${learning.join(", ")}.
 ${education.degree}, ${education.school}, ${education.date}, ${education.gpa}.
 ${training.map((t) => `${t.name}${t.provider ? ` — ${t.provider}` : ""} — ${t.status}`).join("\n")}`;
 }
+
+export const heroShowcase = {
+  title: "Inside My Projects",
+  nlp: {
+    heading: "Text preprocessing",
+    input: "I do not recommend this product.",
+    output: ["not", "recommend", "product"],
+    highlight: "not",
+    explanation: "Negation is preserved during stop-word removal.",
+    label: "Recorded example — not live inference.",
+    linkLabel: "Explore NLP project",
+    slug: "nlp-text-preprocessing-pipeline",
+  },
+  models: {
+    heading: "Yelp model comparison",
+    order: ["TF-IDF + Logistic Regression", "LSTM", "SimpleRNN"],
+    takeaway: "The traditional baseline achieved the best test accuracy in this experiment.",
+    label: "Recorded results — not live training.",
+    linkLabel: "Explore Yelp project",
+    slug: "yelp-sentiment-analysis",
+  },
+  security: {
+    heading: "AdaptiveQKE",
+    steps: ["Context Probe", "Policy Engine", "TLS Client", "Measurement"],
+    highlight: "Policy Engine",
+    text: "Weaam independently designed and implemented the selection policy within a team research project.",
+    label: "Architecture illustration — no live TLS connection.",
+    linkLabel: "Explore AdaptiveQKE",
+    slug: "adaptiveqke",
+  },
+};
