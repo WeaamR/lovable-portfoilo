@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Github, Linkedin, Mail, MapPin, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAssistant } from "@/components/site/assistant";
-import { PreprocessExamples, RecordedLabel } from "@/components/site/widgets";
+import { HeroShowcase } from "@/components/site/hero-showcase";
 import { categories, education, getProject, learning, profile, projects, skills, training, type Category } from "@/content/portfolio";
 import portrait from "@/assets/weaam-portrait.jpg.asset.json";
 
@@ -62,21 +62,7 @@ function Index() {
               <MapPin className="h-4 w-4" aria-hidden /> {profile.location}
             </p>
           </div>
-          <aside aria-label="Text preprocessing in practice" className="surface p-6 shadow-sm">
-            <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-base font-bold">Text preprocessing in practice</h2>
-              <RecordedLabel>Recorded preprocessing example</RecordedLabel>
-            </div>
-            <PreprocessExamples initial="negation" compact />
-            <p className="mt-4 text-xs text-muted-foreground">Saved project example, not live inference.</p>
-            <Link
-              to="/projects/$slug"
-              params={{ slug: "nlp-text-preprocessing-pipeline" }}
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
-            >
-              View the preprocessing project <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </aside>
+          <HeroShowcase />
         </div>
       </section>
 
