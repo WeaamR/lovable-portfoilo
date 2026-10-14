@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, MessageSquare, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,20 @@ const nav = [
 export function Header() {
   const { open } = useAssistant();
   const [menu, setMenu] = useState(false);
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const els = nav.map((n) => document.getElementById(n.hash)).filter((e): e is HTMLElement => !!e);
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (vis[0]) setActive(vis[0].target.id);
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    els.forEach((e) => io.observe(e));
+    return () => io.disconnect();
+  }, []);
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded focus:bg-card focus:px-3 focus:py-2">
@@ -27,7 +41,15 @@ export function Header() {
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-7 md:flex">
           {nav.map((n) => (
-            <Link key={n.hash} to="/" hash={n.hash} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <Link
+              key={n.hash}
+              to="/"
+              hash={n.hash}
+              aria-current={active === n.hash ? "location" : undefined}
+              className={`border-b-2 py-1 text-sm transition-colors hover:text-foreground ${
+                active === n.hash ? "border-primary font-medium text-primary" : "border-transparent text-muted-foreground"
+              }`}
+            >
               {n.label}
             </Link>
           ))}
@@ -57,7 +79,10 @@ export function Header() {
           <ul className="container-page py-2">
             {nav.map((n) => (
               <li key={n.hash}>
-                <Link to="/" hash={n.hash} onClick={() => setMenu(false)} className="block py-3 text-base">
+                <Link to="/" hash={n.hash} onClick={() => setMenu(false)}
+                  aria-current={active === n.hash ? "location" : undefined}
+                  className={`block min-h-11 py-3 text-base ${active === n.hash ? "font-medium text-primary" : ""}`}
+                >
                   {n.label}
                 </Link>
               </li>
@@ -74,7 +99,8 @@ export function Footer() {
     <footer className="border-t py-10">
       <div className="container-page flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:justify-between">
         <p>© {new Date().getFullYear()} {profile.name} · {profile.location}</p>
-        <div className="flex gap-5">
+        <div className="flex flex-wrap gap-5">
+          <a href={`mailto:${profile.email}`} className="hover:text-foreground">Email</a>
           <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-foreground">GitHub</a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-foreground">LinkedIn</a>
         </div>
