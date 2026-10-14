@@ -21,12 +21,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string; title: string; children: React.ReactNode }) {
+function Section({ id, eyebrow, title, children, centerMobile = false }: { id: string; eyebrow: string; title: string; children: React.ReactNode; centerMobile?: boolean }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="border-t py-20 sm:py-24">
       <div className="container-page">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 id={`${id}-title`} className="mt-2 text-2xl font-bold sm:text-3xl">{title}</h2>
+        <div className={centerMobile ? "text-center md:text-left" : undefined}>
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 id={`${id}-title`} className="mt-2 text-2xl font-bold sm:text-3xl">{title}</h2>
+        </div>
         <div className="mt-10">{children}</div>
       </div>
     </section>
@@ -43,12 +45,12 @@ function Index() {
       {/* Hero */}
       <section className="py-16 sm:py-24">
         <div className="container-page grid items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
-          <div className="min-w-0">
+          <div className="min-w-0 text-center lg:text-left">
             <p className="eyebrow">{profile.focus}</p>
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">{profile.headline}</h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">{profile.description}</p>
-            <p className="mt-3 max-w-xl text-muted-foreground">{profile.supporting}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <p className="mt-6 mx-auto max-w-xl text-lg text-muted-foreground lg:mx-0">{profile.description}</p>
+            <p className="mx-auto mt-3 max-w-xl text-muted-foreground lg:mx-0">{profile.supporting}</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Button asChild size="lg">
                 <a href="#projects">Explore Projects <ArrowRight className="h-4 w-4" /></a>
               </Button>
@@ -56,7 +58,7 @@ function Index() {
                 <MessageSquare className="h-4 w-4" /> Ask About My Work
               </Button>
             </div>
-            <p className="mt-6 flex items-center gap-1.5 text-sm text-muted-foreground">
+            <p className="mt-6 flex items-center justify-center gap-1.5 text-sm lg:justify-start text-muted-foreground">
               <MapPin className="h-4 w-4" aria-hidden /> {profile.location}
             </p>
           </div>
@@ -78,17 +80,17 @@ function Index() {
         </div>
       </section>
 
-      <Section id="about" eyebrow="About" title="Understanding why a solution works">
-        <div className="grid items-start gap-10 md:grid-cols-[18rem_1fr]">
+      <Section id="about" eyebrow="About" title="Understanding why a solution works" centerMobile>
+        <div className="grid items-center gap-10 md:grid-cols-[18rem_1fr]">
           <img
             src={portrait.url}
             alt="Portrait of Weaam Abdalaal"
             width={288}
             height={360}
             loading="lazy"
-            className="aspect-[4/5] w-full max-w-72 rounded-2xl border object-cover object-top"
+            className="mx-auto aspect-[4/5] h-auto w-full max-w-64 rounded-2xl md:max-w-72 border object-cover object-top"
           />
-          <div className="max-w-2xl space-y-4 text-base leading-relaxed sm:text-[1.05rem]">{profile.about.map((para) => <p key={para.slice(0, 24)}>{para}</p>)}</div>
+          <div className="mx-auto max-w-[36rem] space-y-5 text-center text-base leading-relaxed sm:text-[1.05rem] md:mx-0 md:max-w-2xl md:text-left">{profile.about.map((para) => <p key={para.slice(0, 24)}>{para}</p>)}</div>
         </div>
       </Section>
 
@@ -109,7 +111,7 @@ function Index() {
         </div>
         <ul className="grid gap-5 md:grid-cols-2">
           {shown.map((p) => (
-            <li key={p.id} className="surface lift flex flex-col p-6">
+            <li key={p.id} className="surface lift flex h-full flex-col p-6">
               <p className="text-xs font-medium text-primary">{p.categories.join(" · ")}</p>
               <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
               <p className="mt-2 text-muted-foreground">{p.purpose}</p>
@@ -185,8 +187,8 @@ function Index() {
       </Section>
 
       <Section id="contact" eyebrow="Contact" title="Let’s talk about the work">
-        <p className="max-w-xl text-muted-foreground">Email me at <a href={`mailto:${profile.email}`} className="font-medium text-primary underline underline-offset-4">{profile.email}</a> or reach me through LinkedIn. Code and project evidence are on GitHub.</p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <p className="mx-auto max-w-xl text-center text-muted-foreground sm:mx-0 sm:text-left">Email me at <a href={`mailto:${profile.email}`} className="font-medium text-primary underline underline-offset-4">{profile.email}</a> or reach me through LinkedIn. Code and project evidence are on GitHub.</p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3 sm:justify-start">
           <Button asChild size="lg">
             <a href={`mailto:${profile.email}`}><Mail className="h-4 w-4" /> Email</a>
           </Button>
