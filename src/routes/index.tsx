@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Github, Linkedin, Mail, MapPin, MessageSquare } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Linkedin, Mail, MapPin, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAssistant } from "@/components/site/assistant";
 import { HeroShowcase } from "@/components/site/hero-showcase";
-import { categories, education, getProject, learning, profile, projects, skills, training, type Category } from "@/content/portfolio";
+import { categories, education, getProjectById, learning, profile, projects, skills, training, type Category } from "@/content/portfolio";
 import portrait from "@/assets/weaam-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
