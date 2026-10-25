@@ -76,6 +76,10 @@ function Stats({ items }: { items: { label: string; value: string }[] }) {
   );
 }
 
+function hasCustomResults(id: string) {
+  return ["yelp-sentiment-analysis", "adaptiveqke", "nlp-text-preprocessing-pipeline", "neural-network-experiments"].includes(id);
+}
+
 function Results({ p }: { p: Project }) {
   if (p.id === "yelp-sentiment-analysis")
     return (
@@ -156,12 +160,14 @@ function Results({ p }: { p: Project }) {
         </div>
       </div>
     );
+  if (p.id !== "neural-network-experiments")
+    return p.results?.length ? <ul className="list-disc space-y-1.5 pl-5">{p.results.map((r) => <li key={r}>{r}</li>)}</ul> : null;
   return (
     <div className="surface p-5 sm:p-6">
       <NNTabs />
       <p className="mt-4 text-sm text-muted-foreground">
         Remaining reports (prediction analysis, custom digits, EarlyStopping, L2, batch size, activations) are in the{" "}
-        <a href={p.repo} target="_blank" rel="noreferrer" className="text-primary underline">repository</a>.
+        <a href={p.repo ?? "#"} target="_blank" rel="noreferrer" className="text-primary underline">repository</a>.
       </p>
     </div>
   );
@@ -180,40 +186,67 @@ function ProjectPage() {
         <p className="eyebrow">{p.categories.join(" · ")}</p>
         <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">{p.title}</h1>
         <p className="mt-3 text-xl text-muted-foreground">{p.subtitle}</p>
-        <a href={p.repo} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
-          View repository <ExternalLink className="h-3.5 w-3.5" />
-        </a>
+        {(p.repo || p.demo) && (
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+            {p.repo && (
+              <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+                View repository <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            )}
+            {p.demo && (
+              <a href={p.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+                Live demo <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            )}
+          </div>
+        )}
       </header>
 
       <Block title="Overview"><p className="leading-relaxed">{p.overview}</p></Block>
-      <Block title="Problem"><p className="leading-relaxed">{p.problem}</p></Block>
+      {p.problem && <Block title="Problem"><p className="leading-relaxed">{p.problem}</p></Block>}
       <Block title="Approach">
         <ul className="list-disc space-y-1.5 pl-5">{p.approach.map((a) => <li key={a}>{a}</li>)}</ul>
       </Block>
       <Block title="My Contribution">
         {p.contribution.summary && <p>{p.contribution.summary}</p>}
-        {p.contribution.independent && (
+        {(p.contribution.individual?.length || p.contribution.team?.length) && (
           <div className="grid gap-5 md:grid-cols-2">
             <div className="surface border-primary/40 p-5">
               <h3 className="font-semibold text-primary">Completed independently</h3>
-              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm">{p.contribution.independent.map((c) => <li key={c}>{c}</li>)}</ul>
+              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm">{p.contribution.individual?.map((c) => <li key={c}>{c}</li>)}</ul>
             </div>
             <div className="surface p-5">
               <h3 className="font-semibold">Collaborative (team)</h3>
-              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm">{p.contribution.collaborative?.map((c) => <li key={c}>{c}</li>)}</ul>
+              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm">{p.contribution.team?.map((c) => <li key={c}>{c}</li>)}</ul>
             </div>
           </div>
         )}
       </Block>
-      <Block title={p.id === "adaptiveqke" ? "Demonstration" : "Recorded Results"}><Results p={p} /></Block>
-      <Block title="Key Finding"><p className="border-l-2 border-primary pl-4 leading-relaxed">{p.keyFinding}</p></Block>
-      <Block title="Limitations">
-        <ul className="list-disc space-y-1.5 pl-5 text-muted-foreground">{p.limitations.map((l) => <li key={l}>{l}</li>)}</ul>
-      </Block>
+      {(hasCustomResults(p.id) || !!p.results?.length) && (
+        <Block title={p.id === "adaptiveqke" ? "Demonstration" : "Recorded Results"}><Results p={p} /></Block>
+      )}
+      {!!p.screenshots?.length && (
+        <Block title="Screenshots">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {p.screenshots.map((i) => (
+              <figure key={i.src} className="surface overflow-hidden p-3">
+                <img src={i.src} alt={i.alt} loading="lazy" className="w-full rounded-md bg-card" />
+                <figcaption className="mt-2 text-xs text-muted-foreground">{i.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </Block>
+      )}
+      {p.keyFinding && <Block title="Key Finding"><p className="border-l-2 border-primary pl-4 leading-relaxed">{p.keyFinding}</p></Block>}
+      {!!p.limitations?.length && (
+        <Block title="Limitations">
+          <ul className="list-disc space-y-1.5 pl-5 text-muted-foreground">{p.limitations.map((l) => <li key={l}>{l}</li>)}</ul>
+        </Block>
+      )}
       <Block title="Technologies">
         <ul className="flex flex-wrap gap-1.5">{p.technologies.map((t) => <li key={t} className="rounded-md bg-muted px-2.5 py-1 text-sm">{t}</li>)}</ul>
       </Block>
-      <Block title="Repository and evidence">
+      {!!p.evidence?.length && <Block title="Repository and evidence">
         <ul className="space-y-2">
           {p.evidence.map((e) => (
             <li key={e.url}>
@@ -223,11 +256,11 @@ function ProjectPage() {
             </li>
           ))}
         </ul>
-      </Block>
+      </Block>}
 
       <nav aria-label="More projects" className="mt-6 flex flex-wrap justify-between gap-4 border-t pt-8">
         <Link to="/" hash="projects" className="text-sm font-medium hover:underline">← Back to project grid</Link>
-        <Link to="/projects/$slug" params={{ slug: next.id }} className="text-sm font-medium text-primary hover:underline">
+        <Link to="/projects/$slug" params={{ slug: next.slug }} className="text-sm font-medium text-primary hover:underline">
           Next: {next.title} →
         </Link>
       </nav>
