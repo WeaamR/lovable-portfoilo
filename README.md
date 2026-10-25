@@ -24,3 +24,25 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Adding a project
+
+All projects live in `src/content/projects.ts` (the `allProjects` list). Cards, category filters, the detail page at `/projects/<slug>`, and the AI assistant's knowledge are generated from it automatically.
+
+1. Copy the example object from `src/content/project-template.ts` (it is never published) into `allProjects`.
+2. Give it a unique `id` and `slug` (lowercase, hyphens). Never change them after publishing, or old links break.
+3. Fill in the required fields (title, subtitle, purpose, highlight, categories, technologies, overview, approach, contribution). For team work, put your part in `contribution.individual` and shared work in `contribution.team`.
+4. Optional fields (`problem`, `results`, `keyFinding`, `limitations`, `repo`, `demo`, `screenshots`, `evidence`) can be left out; their sections are hidden automatically. Links must start with `https://`.
+5. Remove `draft: true` to publish. Run `bunx vitest run src/test/projects-content.test.ts` to check links, slugs and alt text.
+
+### Adding images
+
+Upload the screenshot to the project asset store so it gets an `.asset.json` pointer in `src/assets/projects/`, then import it at the top of `projects.ts` and reference it:
+
+```ts
+import shot from "@/assets/projects/my-project-1.png.asset.json";
+// ...
+screenshots: [{ src: shot.url, alt: "What the screenshot shows" }],
+```
+
+Every screenshot needs meaningful `alt` text.

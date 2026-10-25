@@ -11,5 +11,6 @@
 
 # Project rules
 - All portfolio text and recorded metrics live in `src/content/portfolio.ts`; components only render it. Why: one source feeds both the site and the AI assistant's knowledge.
+- Project records live in `src/content/projects.ts` (re-exported by portfolio.ts); optional fields hide their sections, `draft: true` excludes a project, and `validateProjects` is enforced by a test. Why: adding a project is a single data edit.
 - The assistant (`src/lib/assistant.functions.ts`) builds its prompt from that module and only cites IDs in `sourceLinks`. Why: grounded answers and validated links.
 - Repository charts are hosted as asset pointers in `src/assets/artifacts/`; never fabricate charts. Why: only real artifacts are shown.
