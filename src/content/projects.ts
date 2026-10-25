@@ -62,6 +62,84 @@ const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
     {
+    id: "n8n-rag-course-assistant",
+    slug: "n8n-rag-course-assistant",
+    title: "RAG Course Assistant",
+    subtitle: "Document question answering with n8n",
+    categories: ["NLP & Data"],
+    cardTech: ["n8n", "Google Gemini", "OpenAI", "Supabase"],
+    technologies: [
+      "n8n",
+      "Google Gemini",
+      "OpenAI Embeddings",
+      "Supabase Vector Store",
+      "Retrieval-Augmented Generation",
+      "Conversation Memory",
+    ],
+    purpose:
+      "A course assistant that retrieves relevant document passages and uses a language model to answer questions about an AI automation guide.",
+    highlight:
+      "Combines semantic retrieval, language generation, and recent conversation context in an n8n workflow.",
+    repo: "https://github.com/WeaamR/n8n-rag-course-assistant",
+    overview:
+      "A guided RAG prototype built with an n8n AI Agent, Google Gemini, OpenAI embeddings, and Supabase. The shared workflow handles chat and retrieval from an existing indexed knowledge base.",
+    problem:
+      "Learners need a practical way to find relevant information within a course guide and ask follow-up questions.",
+    approach: [
+      "Receive questions through an n8n Chat Trigger.",
+      "Connect an AI Agent to Gemini, conversation memory, and a document retrieval tool.",
+      "Embed search queries using OpenAI text-embedding-3-small.",
+      "Retrieve relevant passages from Supabase using the documents table and match_documents function.",
+      "Configure a retrieval limit of four passages and a memory window of five interactions.",
+      "Use retrieved information to support the generated response.",
+    ],
+    contribution: {
+      summary:
+        "Guided implementation and configuration of the n8n chat and retrieval workflow, with a documented question-answering demonstration. The source guide and training material belong to their respective authors.",
+    },
+    results: [
+      "One documented successful run identified the source as The AI Automation Starter Guide (2026 Edition).",
+      "The recorded execution reported 4.69 seconds and 2,283 tokens; these are single-run observations, not benchmarks.",
+      "The repository includes a sanitized workflow export, setup guidance, architecture documentation, and an evaluation plan.",
+    ],
+    limitations: [
+      "The executable export covers chat and retrieval only; a separate ingestion workflow is not included.",
+      "Credentials and an indexed Supabase knowledge base must be configured separately.",
+      "The submitted system prompt does not explicitly require retrieval, citations, or abstention when evidence is missing.",
+      "Full retrieved passages were not visible in the demonstration, so comprehensive answer grounding was not established.",
+      "Simple Memory requires further session-isolation and deployment testing before scaling.",
+    ],
+    screenshots: [
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/n8n-rag-course-assistant/main/assets/workflow-overview.png",
+        alt:
+          "n8n RAG workflow connecting the Chat Trigger and AI Agent to Google Gemini, Simple Memory, Supabase Vector Store, and OpenAI Embeddings.",
+      },
+    ],
+    evidence: [
+      {
+        label: "Project documentation",
+        url: "https://github.com/WeaamR/n8n-rag-course-assistant#readme",
+      },
+      {
+        label: "View full-size workflow",
+        url: "https://raw.githubusercontent.com/WeaamR/n8n-rag-course-assistant/main/assets/workflow-overview.png",
+      },
+      {
+        label: "Workflow JSON",
+        url: "https://github.com/WeaamR/n8n-rag-course-assistant/blob/main/workflows/RAG_AI_Agent.json",
+      },
+      {
+        label: "Setup guide",
+        url: "https://github.com/WeaamR/n8n-rag-course-assistant/blob/main/docs/setup.md",
+      },
+      {
+        label: "Evaluation and limitations",
+        url: "https://github.com/WeaamR/n8n-rag-course-assistant/blob/main/docs/evaluation.md",
+      },
+    ],
+  },
+    {
     id: "plancraft-ai",
     slug: "plancraft-ai",
     title: "PlanCraft AI",
