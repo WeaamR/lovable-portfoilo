@@ -62,6 +62,85 @@ const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
     {
+    id: "plancraft-ai",
+    slug: "plancraft-ai",
+    title: "PlanCraft AI",
+    subtitle: "Turn project ideas into actionable plans",
+    categories: ["Web Applications"],
+    cardTech: ["n8n", "Google Gemini", "Supabase", "Lovable"],
+    technologies: [
+      "n8n",
+      "Google Gemini",
+      "Supabase",
+      "Webhooks",
+      "JSON Schema",
+      "Lovable",
+    ],
+    purpose:
+      "An AI-assisted planning application that transforms project briefs into structured execution phases, priorities, recommendations, and risks.",
+    highlight:
+      "Connects a web interface with an automation workflow for generating, storing, and displaying structured project plans.",
+    repo: "https://github.com/WeaamR/plancraft-ai-weaam",
+    demo: "https://plancraft-ai-weaam.lovable.app/",
+    overview:
+      "Users describe a project, its goal, and constraints. An n8n workflow retrieves the saved request from Supabase, uses Google Gemini to generate a structured plan, saves the result, and updates the request status.",
+    problem:
+      "A project idea often lacks a clear starting point, ordered execution steps, priorities, and an assessment of potential risks.",
+    approach: [
+      "Collect the project title, description, main goal, and additional context through a web form.",
+      "Store the request in Supabase and pass its identifier to the automation webhook.",
+      "Retrieve the saved brief and use Gemini to generate a project-specific plan.",
+      "Parse the response against a JSON schema covering phases, actions, priorities, risks, and duration.",
+      "Save the generated plan and mark the corresponding request as completed.",
+      "Display the original brief alongside the structured result.",
+    ],
+    contribution: {
+      summary:
+        "Application and automation integration using Lovable, n8n, Supabase, and Google Gemini, documented through the request-to-plan user journey.",
+    },
+    results: [
+      "A documented graphic design studio example progresses from Pending to Completed.",
+      "The displayed result includes four prioritized execution phases, recommendations, risks with mitigations, and a 30-day estimated duration.",
+      "The example demonstrates plan generation, not achievement of the proposed business goals.",
+    ],
+    limitations: [
+      "Generated plans require human review; structured output does not guarantee feasibility or factual accuracy.",
+      "The documented example does not establish aggregate output quality, latency, or generation cost.",
+      "An HTTP 202 acknowledgement indicates receipt, not successful plan generation.",
+    ],
+    screenshots: [
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/plancraft-ai-weaam/main/assets/homepage.png",
+        alt:
+          "PlanCraft AI homepage showing the project brief form and saved plans.",
+      },
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/plancraft-ai-weaam/main/assets/n8n-workflow.png",
+        alt:
+          "n8n workflow connecting a webhook, Supabase request lookup, Gemini generation, structured output parsing, plan storage, and status update.",
+      },
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/plancraft-ai-weaam/main/assets/completed-plan.png",
+        alt:
+          "Completed graphic design studio plan with prioritized execution phases, recommendations, risks, and mitigations.",
+      },
+    ],
+    evidence: [
+      {
+        label: "Project documentation",
+        url: "https://github.com/WeaamR/plancraft-ai-weaam#readme",
+      },
+      {
+        label: "View full-size workflow",
+        url: "https://raw.githubusercontent.com/WeaamR/plancraft-ai-weaam/main/assets/n8n-workflow.png",
+      },
+      {
+        label: "Documented generation example",
+        url: "https://github.com/WeaamR/plancraft-ai-weaam#demonstrated-result",
+      },
+    ],
+  },
+    {
     id: "skillbridge-lite",
     slug: "skillbridge-lite",
     title: "SkillBridge Lite",
