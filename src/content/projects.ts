@@ -62,6 +62,74 @@ const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
     {
+    id: "url-threat-analysis-bot",
+    slug: "url-threat-analysis-bot",
+    title: "URL Threat Analysis Bot",
+    subtitle: "AI-assisted URL reputation analysis through Telegram",
+    categories: ["Security Research"],
+    cardTech: ["n8n", "Telegram", "VirusTotal", "OpenRouter"],
+    technologies: [
+      "n8n",
+      "Telegram Bot API",
+      "JavaScript",
+      "HTTP APIs",
+      "VirusTotal",
+      "OpenRouter",
+    ],
+    purpose:
+      "A Telegram bot that turns URL reputation reports into clear Arabic explanations of potential threats.",
+    highlight:
+      "Connects security report data with an AI-assisted explanation through an automated n8n workflow.",
+    repo: "https://github.com/WeaamR/url-threat-analysis-bot",
+    overview:
+      "An n8n workflow receives URLs through Telegram, requests reputation report information, extracts engine classifications, and uses OpenRouter to produce an Arabic explanation of the findings.",
+    problem:
+      "Security reports contain multiple engine classifications that can be difficult to interpret without context about uncertainty and report freshness.",
+    approach: [
+      "Receive a URL through a Telegram message.",
+      "Process the message with JavaScript and conditional workflow nodes.",
+      "Prepare a URL identifier and request report information through an HTTP integration.",
+      "Extract scan classifications and pass them to an OpenRouter analysis step.",
+      "Return an Arabic explanation with classification counts, the available analysis timestamp, and cautionary notes.",
+    ],
+    contribution: {
+      summary:
+        "Workflow integration connecting Telegram, URL reputation report data, and AI-assisted explanations using n8n.",
+    },
+    results: [
+      "One documented Telegram response presents 3 malicious detections out of 93 engines.",
+      "A second documented response presents 2 suspicious classifications out of 92 engines.",
+      "The examples explain uncertainty rather than treating engine counts as definitive safety verdicts.",
+    ],
+    limitations: [
+      "The repository contains documentation and screenshots; an executable workflow JSON export is not included.",
+      "The evidence does not establish whether each request triggers a new scan or retrieves an existing report.",
+      "Exact validation conditions, model configuration, and error-handling behavior are not documented.",
+      "No measured accuracy, latency, or cost is reported. Zero detections do not guarantee URL safety.",
+    ],
+    screenshots: [
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/url-threat-analysis-bot/main/assets/n8n-workflow.png",
+        alt:
+          "n8n workflow connecting Telegram input, JavaScript processing, conditional routing, HTTP report lookup, scan-result extraction, OpenRouter analysis, and a Telegram response.",
+      },
+    ],
+    evidence: [
+      {
+        label: "Project documentation",
+        url: "https://github.com/WeaamR/url-threat-analysis-bot#readme",
+      },
+      {
+        label: "View full-size workflow",
+        url: "https://raw.githubusercontent.com/WeaamR/url-threat-analysis-bot/main/assets/n8n-workflow.png",
+      },
+      {
+        label: "Telegram demonstration reports",
+        url: "https://github.com/WeaamR/url-threat-analysis-bot#demonstration-results",
+      },
+    ],
+  },
+    {
     id: "the-inner-room",
     slug: "the-inner-room",
     title: "THE INNER ROOM",
