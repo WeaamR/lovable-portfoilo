@@ -33,7 +33,7 @@ All projects live in `src/content/projects.ts` (the `allProjects` list). Cards, 
 2. Give it a unique `id` and `slug` (lowercase, hyphens). Never change them after publishing, or old links break.
 3. Fill in the required fields (title, subtitle, purpose, highlight, categories, technologies, overview, approach, contribution). For team work, put your part in `contribution.individual` and shared work in `contribution.team`.
 4. Optional fields (`problem`, `results`, `keyFinding`, `limitations`, `repo`, `demo`, `screenshots`, `evidence`) can be left out; their sections are hidden automatically. Links must start with `https://`.
-5. Remove `draft: true` to publish. Run `bunx vitest run src/test/projects-content.test.ts` to check links, slugs and alt text.
+5. Remove `draft: true` to publish. Run `bunx vitest run src/test/projects-content.test.tsx` to check links, slugs and alt text.
 
 ### Adding images
 
