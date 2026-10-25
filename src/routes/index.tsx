@@ -111,9 +111,16 @@ function Index() {
                 <Link to="/projects/$slug" params={{ slug: p.slug }} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
                   Explore Project <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-                <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
-                  <Github className="h-3.5 w-3.5" /> GitHub<span className="sr-only"> repository for {p.title}</span>
-                </a>
+                {p.repo && (
+                  <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+                    <Github className="h-3.5 w-3.5" /> GitHub<span className="sr-only"> repository for {p.title}</span>
+                  </a>
+                )}
+                {p.demo && (
+                  <a href={p.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+                    <ExternalLink className="h-3.5 w-3.5" /> Live demo<span className="sr-only"> for {p.title}</span>
+                  </a>
+                )}
               </div>
             </li>
           ))}
@@ -130,13 +137,16 @@ function Index() {
               </ul>
               <p className="mt-5 text-xs text-muted-foreground">Explore supporting projects:</p>
               <ul className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
-                {s.evidence.map((id) => (
-                  <li key={id}>
-                    <Link to="/projects/$slug" params={{ slug: id }} className="text-sm font-medium text-primary hover:underline">
-                      {getProject(id)?.title}
-                    </Link>
-                  </li>
-                ))}
+                {s.evidence.flatMap((id) => {
+                  const ep = getProjectById(id);
+                  return ep ? [
+                    <li key={id}>
+                      <Link to="/projects/$slug" params={{ slug: ep.slug }} className="text-sm font-medium text-primary hover:underline">
+                        {ep.title}
+                      </Link>
+                    </li>,
+                  ] : [];
+                })}
               </ul>
             </div>
           ))}

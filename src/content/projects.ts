@@ -218,6 +218,7 @@ const allProjects: Project[] = [
 export const projects: Project[] = allProjects.filter((p) => !p.draft);
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProjectById = (id: string) => projects.find((p) => p.id === id);
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const isHttps = (u: string) => {
