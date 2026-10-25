@@ -62,6 +62,87 @@ const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
     {
+    id: "skillbridge-lite",
+    slug: "skillbridge-lite",
+    title: "SkillBridge Lite",
+    subtitle: "Understand your fit. Discover your next step.",
+    categories: ["Web Applications"],
+    cardTech: ["React", "TypeScript", "TanStack", "Tailwind CSS"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "TanStack Start",
+      "TanStack Router",
+      "Tailwind CSS",
+      "Vite",
+      "Lovable",
+    ],
+    purpose:
+      "A career-guidance prototype comparing profile evidence with sample opportunities to explain relevant skills, potential gaps, and practical next steps.",
+    highlight:
+      "Distinguishes missing evidence from missing skills and connects recommendations to the user's profile.",
+    repo: "https://github.com/WeaamR/skillbridge-lite-weaam",
+    demo: "https://skillbridgelite.lovable.app/",
+    overview:
+      "SkillBridge Lite helps students, recent graduates, and early-career professionals explore how their documented skills, projects, and experience relate to a sample opportunity. Results are organized into relevant skills, potential gaps, and recommended next steps.",
+    problem:
+      "Opportunity requirements can be difficult to connect with concrete profile evidence, leaving users unsure what to highlight or improve.",
+    approach: [
+      "Provide an editable profile covering name, headline, background, skills, projects, and experience.",
+      "Let users browse clearly labeled sample opportunities and review their requirements.",
+      "Present an analysis flow with visible loading feedback.",
+      "Explain relevant skills using supporting profile evidence.",
+      "Identify undocumented requirements and recommend practical improvements.",
+    ],
+    contribution: {
+      summary:
+        "Development of a career-guidance prototype using Lovable, documented through its profile, opportunity-browsing, and analysis user journeys.",
+    },
+    results: [
+      "A documented example connects Python and API experience to an AI Automation Intern sample opportunity.",
+      "The displayed analysis identifies missing evidence for AI-service integration, workflow development, and process documentation.",
+      "Six repository screenshots document the journey from homepage to completed analysis.",
+    ],
+    limitations: [
+      "Opportunities are sample data, not verified live vacancies.",
+      "The output provides guidance; it does not predict hiring outcomes or rank applicants.",
+      "Screenshots document one displayed analysis, not measured accuracy across multiple profiles.",
+      "The model integration and permanent profile storage were not independently verified in this review.",
+    ],
+    screenshots: [
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/skillbridge-lite-weaam/main/assets/home.png",
+        alt:
+          "SkillBridge Lite homepage with Explore Opportunities and Complete My Profile actions.",
+      },
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/skillbridge-lite-weaam/main/assets/profile.png",
+        alt:
+          "Editable profile with skills, projects, experience, and a sample-data notice.",
+      },
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/skillbridge-lite-weaam/main/assets/opportunities.png",
+        alt:
+          "Sample opportunities presented as cards with role descriptions and required skills.",
+      },
+      {
+        src: "https://raw.githubusercontent.com/WeaamR/skillbridge-lite-weaam/main/assets/analysis-result.png",
+        alt:
+          "Analysis showing relevant skills, supporting evidence, potential gaps, and recommended next steps.",
+      },
+    ],
+    evidence: [
+      {
+        label: "Project documentation",
+        url: "https://github.com/WeaamR/skillbridge-lite-weaam#readme",
+      },
+      {
+        label: "Screenshots and user journey",
+        url: "https://github.com/WeaamR/skillbridge-lite-weaam#screenshots-and-user-journey",
+      },
+    ],
+  },
+    {
     id: "url-threat-analysis-bot",
     slug: "url-threat-analysis-bot",
     title: "URL Threat Analysis Bot",
