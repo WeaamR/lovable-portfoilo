@@ -4,7 +4,7 @@ Implement exactly the screenshot and nothing else
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://screen-to-pixel-align.lovable.app
+**Live app**: https://weaam-abdalaal-portfolio.lovable.app
 
 ## Build with Lovable
 
