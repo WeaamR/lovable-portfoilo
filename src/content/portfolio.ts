@@ -194,13 +194,22 @@ export const sourceLinks: Record<string, { label: string; href: string }> = Obje
 export function buildKnowledge(): string {
   const p = projects
     .map(
-      (x) => `## [project:${x.id}] ${x.title} — ${x.subtitle}
-Categories: ${x.categories.join(", ")}. Technologies: ${x.technologies.join(", ")}.
-Overview: ${x.overview}
-Approach: ${x.approach.join(" ")}
-Contribution: ${x.contribution.summary ?? ""}${x.contribution.independent ? ` INDEPENDENT (Weaam alone): ${x.contribution.independent.join(" ")}` : ""}${x.contribution.collaborative ? ` COLLABORATIVE (team): ${x.contribution.collaborative.join(", ")}.` : ""}
-Key finding: ${x.keyFinding}
-Limitations: ${x.limitations.join(" ")}`,
+      (x) =>
+        [
+          `## [project:${x.id}] ${x.title} — ${x.subtitle}`,
+          `Categories: ${x.categories.join(", ")}. Technologies: ${x.technologies.join(", ")}.`,
+          `Overview: ${x.overview}`,
+          x.problem && `Problem: ${x.problem}`,
+          `Approach: ${x.approach.join(" ")}`,
+          `Contribution: ${x.contribution.summary ?? ""}${x.contribution.individual?.length ? ` INDEPENDENT (Weaam alone): ${x.contribution.individual.join(" ")}` : ""}${x.contribution.team?.length ? ` COLLABORATIVE (team): ${x.contribution.team.join(", ")}.` : ""}`,
+          x.results?.length && `Results: ${x.results.join(" ")}`,
+          x.keyFinding && `Key finding: ${x.keyFinding}`,
+          x.limitations?.length && `Limitations: ${x.limitations.join(" ")}`,
+          x.repo && `Repository: ${x.repo}`,
+          x.demo && `Live demo: ${x.demo}`,
+        ]
+          .filter(Boolean)
+          .join("\n"),
     )
     .join("\n\n");
   const yelp = yelpResults

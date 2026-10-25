@@ -108,7 +108,7 @@ function Index() {
                 ))}
               </ul>
               <div className="mt-auto flex flex-wrap items-center gap-4 pt-6">
-                <Link to="/projects/$slug" params={{ slug: p.id }} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+                <Link to="/projects/$slug" params={{ slug: p.slug }} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
                   Explore Project <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
