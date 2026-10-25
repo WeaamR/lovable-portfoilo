@@ -3,9 +3,14 @@
 // Cards, filters, detail pages (/projects/<slug>) and the AI assistant
 // are all generated from this list. See README "Adding a project".
 // ============================================================
+export type Category = "Machine Learning" | "NLP & Data" | "Security Research" | "Web Applications";
 
-export type Category = "Machine Learning" | "NLP & Data" | "Security Research";
-export const categories: Category[] = ["Machine Learning", "NLP & Data", "Security Research"];
+export const categories: Category[] = [
+  "Machine Learning",
+  "NLP & Data",
+  "Security Research",
+  "Web Applications",
+];
 
 export interface Screenshot {
   /** Imported asset URL, e.g. `import shot from "@/assets/projects/x.png.asset.json"` then `shot.url`. */
@@ -56,6 +61,59 @@ const nlpRepo = "https://github.com/WeaamR/nlp-text-preprocessing-pipeline";
 const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
+    {
+    id: "the-inner-room",
+    slug: "the-inner-room",
+    title: "THE INNER ROOM",
+    subtitle: "A workspace for exploring fictional characters",
+    categories: ["Web Applications"],
+    cardTech: ["React", "TypeScript", "Supabase", "Lovable"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "TanStack",
+      "Tailwind CSS",
+      "Vitest",
+      "Lovable",
+    ],
+    purpose:
+      "A bilingual platform helping writers explore character decisions, motivations, and consequences through challenging dilemmas.",
+    highlight:
+      "Arabic and English support, character profiles, and draft-to-completion exploration workflows.",
+    repo: "https://github.com/WeaamR/inner-room-schema-scout",
+    demo: "https://inner-room-schema-scout.lovable.app/",
+    overview:
+      "THE INNER ROOM supports fictional character development through writing projects, character profiles, and structured scenario explorations.",
+    problem:
+      "Writers need a structured way to connect character choices with motivations, fears, values, and consequences.",
+    approach: [
+      "Organize writing projects and detailed character profiles.",
+      "Explore dilemmas through decision, motivation, potential cost, and author reflection.",
+      "Allow incomplete explorations to be saved as drafts and validate required fields before completion.",
+      "Support Arabic and English interfaces with RTL and LTR layouts.",
+      "Use Supabase for authentication and data storage.",
+    ],
+    contribution: {
+      summary:
+        "AI-assisted application development using Lovable and Supabase, with project documentation and testing evidence.",
+    },
+    results: [
+      "Repository documentation reports 12 passing automated tests across 4 test files.",
+      "Screenshots document completed explorations, validation feedback, draft database records, and the logged-out access flow.",
+    ],
+    limitations: [
+      "The reported automated tests cover selected local behaviors, not complete end-to-end functionality.",
+      "Cross-user database access isolation and full live database integration remain unverified in the available evidence.",
+      "AI-assisted development does not imply AI-generated stories or characters within the application.",
+    ],
+    evidence: [
+      {
+        label: "Project documentation and testing evidence",
+        url: "https://github.com/WeaamR/inner-room-schema-scout#readme",
+      },
+    ],
+  },
   {
     id: "yelp-sentiment-analysis",
     slug: "yelp-sentiment-analysis",
