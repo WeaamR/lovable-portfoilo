@@ -139,26 +139,117 @@ export const nnTabs = [
 
 // ---------- Skills, education ----------
 
-export const skills: { group: string; items: string[]; evidence: string[] }[] = [
+export const skills: {
+  group: string;
+  items: string[];
+  evidence: string[];
+}[] = [
   {
     group: "Programming & Data",
-    items: ["Python", "SQL (Basic)", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Data Cleaning", "EDA"],
-    evidence: ["nlp-text-preprocessing-pipeline", "yelp-sentiment-analysis"],
+    items: [
+      "Python",
+      "SQL (Basic)",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "Data Cleaning",
+      "EDA",
+    ],
+    evidence: [
+      "nlp-text-preprocessing-pipeline",
+      "yelp-sentiment-analysis",
+    ],
   },
   {
-    group: "Machine Learning",
-    items: ["scikit-learn", "Classification", "Model Evaluation"],
-    evidence: ["yelp-sentiment-analysis", "neural-network-experiments"],
+    group: "Machine Learning & NLP",
+    items: [
+      "scikit-learn",
+      "TensorFlow",
+      "Keras",
+      "Classification",
+      "Model Evaluation",
+      "RNN",
+      "LSTM",
+      "NLTK",
+      "TF-IDF",
+      "Tokenization",
+      "Lemmatization",
+    ],
+    evidence: [
+      "yelp-sentiment-analysis",
+      "neural-network-experiments",
+      "nlp-text-preprocessing-pipeline",
+    ],
   },
   {
-    group: "Deep Learning & NLP",
-    items: ["TensorFlow", "Keras", "RNN", "LSTM", "NLTK", "TF-IDF", "Tokenization", "Lemmatization"],
-    evidence: ["yelp-sentiment-analysis", "nlp-text-preprocessing-pipeline", "neural-network-experiments"],
+    group: "Generative AI & RAG",
+    items: [
+      "AI Agents",
+      "Prompt Design",
+      "RAG",
+      "Embeddings",
+      "Vector Search",
+      "Conversation Memory",
+      "Google Gemini",
+      "OpenRouter",
+    ],
+    evidence: [
+      "n8n-rag-course-assistant",
+      "plancraft-ai",
+      "xyz-real-estate-assistant",
+    ],
   },
   {
-    group: "Development & Research",
-    items: ["Git/GitHub", "Linux", "Bash", "Jupyter", "Google Colab", "LaTeX"],
-    evidence: ["adaptiveqke"],
+    group: "Workflow Automation & Integrations",
+    items: [
+      "n8n",
+      "APIs",
+      "Webhooks",
+      "Telegram Bots",
+      "Google Sheets Integration",
+      "Structured JSON Output",
+    ],
+    evidence: [
+      "url-threat-analysis-bot",
+      "xyz-real-estate-assistant",
+      "plancraft-ai",
+    ],
+  },
+  {
+    group: "Web Application Prototyping",
+    items: [
+      "Lovable",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "User Flows",
+    ],
+    evidence: [
+      "the-inner-room",
+      "skillbridge-lite",
+      "plancraft-ai",
+    ],
+  },
+  {
+    group: "Security Research & Development Tools",
+    items: [
+      "Hybrid Post-Quantum Key Exchange",
+      "TLS 1.3",
+      "Selection Policy Design",
+      "VirusTotal Integration",
+      "Git/GitHub",
+      "Linux",
+      "Bash",
+      "Jupyter",
+      "Google Colab",
+      "LaTeX",
+    ],
+    evidence: [
+      "adaptiveqke",
+      "url-threat-analysis-bot",
+    ],
   },
 ];
 export const learning = ["Generative AI", "Agentic AI", "AI Automation"];
