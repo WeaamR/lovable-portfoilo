@@ -61,6 +61,107 @@ const nlpRepo = "https://github.com/WeaamR/nlp-text-preprocessing-pipeline";
 const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
+  {
+  id: "xyz-real-estate-assistant",
+  slug: "xyz-real-estate-assistant",
+  title: "XYZ Real Estate Assistant",
+  subtitle: "Conversational lead intake with n8n and Telegram",
+  categories: ["NLP & Data"],
+  cardTech: ["n8n", "Telegram", "OpenRouter", "Google Sheets"],
+  technologies: [
+    "n8n",
+    "Telegram Bot API",
+    "OpenRouter",
+    "AI Agent",
+    "Simple Memory",
+    "Google Sheets",
+  ],
+
+  purpose:
+    "A conversational assistant that collects property requirements and contact details through Telegram, requests customer confirmation, and can save the collected lead through a Google Sheets tool.",
+
+  highlight:
+    "Combines guided conversations, budget categorization, conversation memory, and spreadsheet integration in one automation workflow.",
+
+  repo: "https://github.com/WeaamR/xyz-real-estate-assistant",
+
+  overview:
+    "XYZ Real Estate Assistant is an n8n prototype for handling initial property enquiries. A Telegram-connected AI agent guides customers through purchase or rental questions, gathers missing information, and prepares a summary for confirmation. The agent has access to a Google Sheets append tool for recording the collected details. The documented conversation demonstrates budget categorization and a switch from English to Arabic.",
+
+  problem:
+    "Property enquiries often arrive as short, incomplete messages. Collecting requirements through repeated manual follow-ups can leave inconsistent records. This project explores how a conversational workflow can organize those enquiries into structured leads for a real estate team.",
+
+  approach: [
+    "Receive customer text messages through a Telegram Trigger and pass them to an n8n AI Agent.",
+    "Use an OpenRouter chat model with instructions to ask one question at a time, reuse supplied details, and clarify ambiguous answers.",
+    "Maintain recent conversation context with Simple Memory, using the Telegram sender ID as the session key and a context window of 15 interactions.",
+    "Guide purchase and rental enquiries through different required questions and map budgets into explicitly defined ranges.",
+    "Instruct the agent to summarize the collected details and obtain explicit customer confirmation before saving.",
+    "Expose a Google Sheets append tool with nine mapped lead fields, then return the agent's response to the originating Telegram chat.",
+  ],
+
+  contribution: {
+    summary:
+      "The implementation brings together conversational intake instructions, Telegram messaging, recent conversation memory, and a Google Sheets agent tool. The repository includes an importable workflow, configuration guidance, screenshots, and documented verification limits.",
+  },
+
+  results: [
+    "The documented conversation shows a $350,000 budget categorized as $200,000 to below $400,000.",
+    "The conversation example demonstrates the assistant switching from English to Arabic following the customer's request.",
+    "A second screenshot shows customer confirmation followed by an Arabic completion message.",
+    "A sanitized, inactive n8n workflow is available for import and configuration with separate credentials and a destination spreadsheet.",
+  ],
+
+  keyFinding:
+    "The prototype demonstrates conversational intake and agent-tool integration. Confirmation and data-quality rules are expressed in the agent prompt; stronger guarantees require separate validation and verification of the actual spreadsheet write.",
+
+  limitations: [
+    "The screenshots do not include the saved spreadsheet row or the Google Sheets tool result, so the visible completion message alone does not verify a successful write.",
+    "Confirmation, field completeness, allowed values, and duplicate avoidance rely on agent instructions. The workflow has no separate validation, duplicate-detection, or error-handling branch.",
+    "Memory uses the sender ID without the chat ID, so the same sender can share context across different chats. The memory buffer is not a permanent customer database.",
+    "The exported field name 'First Ourcase' has an unclear business meaning, and rental budgets do not specify a monthly or yearly period.",
+    "The workflow handles intake and record creation; it does not search property listings, recommend available properties, book viewings, or notify staff.",
+    "The configured OpenRouter route is 'openrouter/free', which does not identify one fixed underlying model.",
+  ],
+
+  screenshots: [
+    {
+      src: "https://raw.githubusercontent.com/WeaamR/xyz-real-estate-assistant/main/assets/workflow.png",
+      alt: "n8n workflow connecting Telegram, an AI Agent, OpenRouter, Simple Memory, and a Google Sheets append tool.",
+    },
+    {
+      src: "https://raw.githubusercontent.com/WeaamR/xyz-real-estate-assistant/main/assets/conversation.png",
+      alt: "Telegram conversation demonstrating property intake, budget categorization, and switching from English to Arabic.",
+    },
+    {
+      src: "https://raw.githubusercontent.com/WeaamR/xyz-real-estate-assistant/main/assets/confirmation.png",
+      alt: "Customer confirmation followed by the assistant's Arabic completion message.",
+    },
+  ],
+
+  evidence: [
+    {
+      label: "Project documentation",
+      url: "https://github.com/WeaamR/xyz-real-estate-assistant/blob/main/README.md",
+    },
+    {
+      label: "Importable n8n workflow",
+      url: "https://github.com/WeaamR/xyz-real-estate-assistant/blob/main/workflows/XYZ_Real_Estate_Assistant.json",
+    },
+    {
+      label: "Workflow overview",
+      url: "https://raw.githubusercontent.com/WeaamR/xyz-real-estate-assistant/main/assets/workflow.png",
+    },
+    {
+      label: "Conversation example",
+      url: "https://raw.githubusercontent.com/WeaamR/xyz-real-estate-assistant/main/assets/conversation.png",
+    },
+    {
+      label: "Confirmation example",
+      url: "https://raw.githubusercontent.com/WeaamR/xyz-real-estate-assistant/main/assets/confirmation.png",
+    },
+  ],
+},
     {
     id: "n8n-rag-course-assistant",
     slug: "n8n-rag-course-assistant",
