@@ -219,21 +219,24 @@ export const skills: {
   ],
 },
   {
-    group: "Web Application Prototyping",
-    items: [
-      "Lovable",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Supabase",
-      "User Flows",
-    ],
-    evidence: [
-      "the-inner-room",
-      "skillbridge-lite",
-      "plancraft-ai",
-    ],
-  },
+{
+  group: "Web Application Prototyping",
+  items: [
+    "Lovable",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Supabase",
+    "TanStack",
+    "User Flows",
+  ],
+  evidence: [
+    "the-inner-room",
+    "skillbridge-lite",
+    "plancraft-ai",
+    "taskbridge",
+  ],
+},
   {
     group: "Security Research & Development Tools",
     items: [
