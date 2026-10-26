@@ -200,22 +200,24 @@ export const skills: {
       "xyz-real-estate-assistant",
     ],
   },
-  {
-    group: "Workflow Automation & Integrations",
-    items: [
-      "n8n",
-      "APIs",
-      "Webhooks",
-      "Telegram Bots",
-      "Google Sheets Integration",
-      "Structured JSON Output",
-    ],
-    evidence: [
-      "url-threat-analysis-bot",
-      "xyz-real-estate-assistant",
-      "plancraft-ai",
-    ],
-  },
+{
+  group: "Workflow Automation & Integrations",
+  items: [
+    "n8n",
+    "Zapier",
+    "APIs",
+    "Webhooks",
+    "Telegram Bots",
+    "Google Sheets Integration",
+    "Structured JSON Output",
+  ],
+  evidence: [
+    "url-threat-analysis-bot",
+    "xyz-real-estate-assistant",
+    "plancraft-ai",
+    "ai-complaint-routing-automation",
+  ],
+},
   {
     group: "Web Application Prototyping",
     items: [
