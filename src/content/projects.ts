@@ -62,6 +62,114 @@ const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
   {
+  id: "ai-complaint-routing-automation",
+  slug: "ai-complaint-routing-automation",
+  title: "AI Complaint Routing Automation",
+  subtitle: "AI-assisted complaint intake and routing with Zapier",
+  categories: ["NLP & Data"],
+
+  cardTech: [
+    "Zapier",
+    "AI by Zapier",
+    "Google Sheets",
+    "Gmail",
+  ],
+
+  technologies: [
+    "Zapier",
+    "Google Forms",
+    "AI by Zapier",
+    "Code by Zapier",
+    "JavaScript",
+    "Paths by Zapier",
+    "Google Sheets",
+    "Gmail",
+  ],
+
+  purpose:
+    "A workflow designed to organize customer complaints, prepare tracking records, and route submissions to ready-for-handling, missing-information, or human-review paths.",
+
+  highlight:
+    "Connects AI-assisted analysis, employee lookup, spreadsheet tracking, and email notifications across three complaint-handling paths.",
+
+  repo:
+    "https://github.com/WeaamR/ai-complaint-routing-automation",
+
+  overview:
+    "AI Complaint Routing Automation is a Zapier workflow design for managing complaints submitted through Google Forms. The shared flow includes AI analysis, validation and routing preparation, employee lookup, notification-recipient selection, and record creation in Google Sheets. Three handling paths then provide different combinations of record updates and Gmail notifications. The repository documents the configuration layout through two workflow screenshots.",
+
+  problem:
+    "Customer complaints can arrive with incomplete information and require different follow-up actions. This project explores a structured workflow for organizing submissions, requesting missing details, and directing cases to the appropriate person for handling or review.",
+
+  approach: [
+    "Start the workflow when Google Forms receives a new response.",
+    "Use an AI by Zapier step to analyze the customer complaint.",
+    "Include Code by Zapier steps for validation and routing preparation, followed by employee lookup and notification-recipient selection.",
+    "Create a complaint-tracking row in Google Sheets before evaluating the handling paths.",
+    "Provide a ready-complaint path that updates the record and emails the responsible person and customer.",
+    "Provide a missing-information path with a JavaScript step, an AI-generated follow-up request, a customer email, and a record update.",
+    "Provide a human-review path that updates the record and emails the responsible person and customer.",
+  ],
+
+  contribution: {
+    summary:
+      "The project brings together complaint intake, AI-assisted analysis, tracking, and conditional communications in a documented Zapier workflow design.",
+  },
+
+  results: [
+    "Two screenshots document the shared processing flow and three named handling paths.",
+    "The visible configuration contains steps numbered 1 through 20, including branch conditions and actions.",
+    "The design includes Google Sheets record creation and updates, employee lookup, and Gmail notification steps.",
+    "A dedicated AI step is included for drafting requests for missing customer information.",
+  ],
+
+  keyFinding:
+    "The workflow design distinguishes complaints that are ready for handling from those requiring more information or human review. Its routing behavior and execution reliability still require evidence from configured conditions and actual test runs.",
+
+  limitations: [
+    "The repository contains documentation and screenshots, without an executable Zap export, JavaScript source, or AI prompts.",
+    "Routing conditions and validation rules are not visible, so branch exclusivity and coverage cannot be verified.",
+    "Employee-matching logic, recipient-selection rules, and behavior after a failed lookup are not documented.",
+    "Successful spreadsheet writes and delivered emails are not demonstrated by the supplied evidence.",
+    "The missing-information path does not show how subsequent customer replies are received or linked to the original complaint.",
+    "The human-review path does not show an approval interface or automatic continuation after a reviewer responds.",
+    "Runtime, routing accuracy, and operating costs have not been measured in the supplied evidence.",
+  ],
+
+  screenshots: [
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/ai-complaint-routing-automation/main/assets/intake-workflow.png",
+      alt:
+        "Zapier complaint intake workflow showing Google Forms, AI analysis, validation and routing, employee lookup, recipient selection, and record creation.",
+    },
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/ai-complaint-routing-automation/main/assets/routing-paths.png",
+      alt:
+        "Three complaint-handling paths for ready complaints, missing information, and human review, with Google Sheets updates and Gmail notifications.",
+    },
+  ],
+
+  evidence: [
+    {
+      label: "Project documentation",
+      url:
+        "https://github.com/WeaamR/ai-complaint-routing-automation/blob/main/README.md",
+    },
+    {
+      label: "Intake workflow",
+      url:
+        "https://raw.githubusercontent.com/WeaamR/ai-complaint-routing-automation/main/assets/intake-workflow.png",
+    },
+    {
+      label: "Complaint routing paths",
+      url:
+        "https://raw.githubusercontent.com/WeaamR/ai-complaint-routing-automation/main/assets/routing-paths.png",
+    },
+  ],
+},
+  {
   id: "xyz-real-estate-assistant",
   slug: "xyz-real-estate-assistant",
   title: "XYZ Real Estate Assistant",
