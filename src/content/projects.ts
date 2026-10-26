@@ -62,6 +62,144 @@ const nnRepo = "https://github.com/WeaamR/neural-network-experiments";
 
 const allProjects: Project[] = [
   {
+  id: "taskbridge",
+  slug: "taskbridge",
+  title: "TaskBridge",
+  subtitle: "Turn work requests into actionable plans",
+  categories: ["Web Applications"],
+
+  cardTech: [
+    "React",
+    "TypeScript",
+    "Supabase",
+    "TanStack",
+  ],
+
+  technologies: [
+    "React",
+    "TypeScript",
+    "TanStack Start",
+    "TanStack Router",
+    "TanStack Query",
+    "Tailwind CSS",
+    "Supabase",
+    "Zod",
+    "Vitest",
+    "Testing Library",
+    "Lovable",
+  ],
+
+  purpose:
+    "A work-planning application that helps freelancers and early-career professionals clarify requests, define outcomes, organize tasks, and track delivery progress.",
+
+  highlight:
+    "Brings the original request, desired outcome, priorities, deadlines, and task progress into one editable plan.",
+
+  repo:
+    "https://github.com/WeaamR/taskbridge-weaam-lovale",
+
+  demo:
+    "https://taskbridge-weaam.lovable.app",
+
+  overview:
+    "TaskBridge helps users turn loosely defined work requests into structured plans. Users capture the brief and desired outcome, add prioritized tasks, and track work through To Do, In Progress, and Done. Plans also support deadlines, deliverables, and a next step. Planning and task breakdown are performed by the user; the application does not implement AI-generated plans.",
+
+  problem:
+    "Freelance work requests often lack a clear definition of success or an actionable checklist. Keeping requirements, tasks, and follow-up notes in separate places makes progress harder to track. TaskBridge organizes these details around a single work plan.",
+
+  approach: [
+    "Provide email/password authentication with account creation, confirmation resend, and password recovery flows.",
+    "Capture a plan title, request description, and desired outcome, with an optional deadline.",
+    "Allow users to create, view, edit, and delete plans, including deliverables and the next step.",
+    "Support adding, editing, and deleting tasks with High, Medium, or Low priorities.",
+    "Track task status as To Do, In Progress, or Done.",
+    "Calculate completion as the rounded percentage of Done tasks, with 0% displayed for plans without tasks.",
+    "Use Supabase for authentication and data, with TanStack Query for queries and mutations.",
+    "Provide validation messages, loading states, retry actions, toasts, and deletion confirmations.",
+  ],
+
+  contribution: {
+    summary:
+      "The project combines a plan-and-task interface, Supabase integration, authentication flows, progress calculation, and user feedback states. The repository includes application source, test definitions, and an illustrated usage walkthrough.",
+  },
+
+  results: [
+    "The documented walkthrough shows a homepage hero-design brief being organized into a plan and individual tasks.",
+    "Screenshots demonstrate plan creation, a task list, an add-task form, and task-status selection.",
+    "The source implements plan and task CRUD operations alongside completion tracking.",
+    "Progress counts only Done tasks: one completed task out of three produces 33%.",
+    "The repository includes tests for progress calculation, signup behavior, authentication form interactions, recovery, and routing; no passing test run is claimed here.",
+  ],
+
+  keyFinding:
+    "A clear link between the original request, desired outcome, and individual tasks makes delivery progress easier to understand. Completion reflects finished tasks rather than tasks that are merely in progress.",
+
+  limitations: [
+    "Plans and task breakdowns are entered manually; AI generation is not implemented.",
+    "The supplied migrations do not include the initial plans and plan_tasks table definitions, so a fresh deployment requires additional database setup.",
+    "The supplied files do not establish the complete row-level security configuration for plans and tasks; cross-user isolation requires verification.",
+    "The screenshots do not demonstrate a completed plan or a full progress transition from 0% to 100%.",
+    "Build, lint, tests, and live authentication and CRUD operations were not executed during this portfolio review.",
+    "Deployment requires support for TanStack Start server functions and appropriate server-side configuration.",
+  ],
+
+  screenshots: [
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/taskbridge-weaam-lovale/main/assets/01-home.png",
+      alt:
+        "TaskBridge landing page introducing the clarify, break down, and deliver workflow.",
+    },
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/taskbridge-weaam-lovale/main/assets/02-create-account.png",
+      alt:
+        "TaskBridge account creation screen with email and password fields.",
+    },
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/taskbridge-weaam-lovale/main/assets/03-create-plan.png",
+      alt:
+        "Create Plan form containing a homepage hero-design request, desired outcome, and optional deadline.",
+    },
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/taskbridge-weaam-lovale/main/assets/04-plan-and-tasks.png",
+      alt:
+        "Plan details showing the brief, goal, progress, existing tasks, and a form for adding another task.",
+    },
+    {
+      src:
+        "https://raw.githubusercontent.com/WeaamR/taskbridge-weaam-lovale/main/assets/05-update-status.png",
+      alt:
+        "Task status selector showing To Do, In Progress, and Done options.",
+    },
+  ],
+
+  evidence: [
+    {
+      label: "Project documentation",
+      url:
+        "https://github.com/WeaamR/taskbridge-weaam-lovale/blob/main/README.md",
+    },
+    {
+      label: "Live application",
+      url:
+        "https://taskbridge-weaam.lovable.app",
+    },
+    {
+      label: "Progress calculation",
+      url:
+        "https://github.com/WeaamR/taskbridge-weaam-lovale/blob/main/src/lib/plans.ts",
+    },
+    {
+      label: "Existing test definitions",
+      url:
+        "https://github.com/WeaamR/taskbridge-weaam-lovale/tree/main/src/test",
+    },
+  ],
+},
+  {
   id: "ai-complaint-routing-automation",
   slug: "ai-complaint-routing-automation",
   title: "AI Complaint Routing Automation",
